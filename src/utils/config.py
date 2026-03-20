@@ -4,7 +4,8 @@ Configuration settings for the AI traffic management system.
 
 CONFIG = {
     "simulation_steps": 100,
+    "train_timesteps": 1000,
     "sumo_net_file": "data/net/simple_net.net.xml",
     "sumo_cfg_file": "data/net/simple_net.sumocfg",
-    "model_save_path": "models/ppo_agent.pth"
+    "model_save_path": "models/ppo_agent.zip"
 }

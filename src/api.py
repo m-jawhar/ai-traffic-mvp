@@ -22,6 +22,17 @@ def get_status():
     }
     return status
 
+class SignalControl(BaseModel):
+    intersection_id: str
+    phase: int
+
+@app.post("/api/v1/control/signal")
+def control_signal(ctrl: SignalControl):
+    # In a full setup, this would hook into the active SUMO session via traci:
+    # traci.trafficlight.setPhase(ctrl.intersection_id, ctrl.phase)
+    print(f"--> [MANUAL OVERRIDE] Intersection '{ctrl.intersection_id}' switched to Phase {ctrl.phase}")
+    return {"status": "success", "message": f"Successfully switched {ctrl.intersection_id} to phase {ctrl.phase}"}
+
 @app.post("/control")
 def control_simulation(ctrl: SimulationControl):
     # Example: run baseline or RL agent
